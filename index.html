@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1 Event Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        ul {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        li {
+            background: #eee;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>A1 Event Registration</h1>
+
+        <input type="text" id="nameInput" placeholder="Enter participant name">
+
+        <br>
+
+        <button onclick="registerUser()">
+            Register
+        </button>
+
+        <h2>Registered Participants</h2>
+
+        <ul id="userList"></ul>
+    </div>
+
+    <script>
+
+        let registrations = [];
+
+        function registerUser() {
+
+            let name = document.getElementById("nameInput").value;
+
+            if(name === "") {
+                alert("Please enter a name");
+                return;
+            }
+
+            registrations.push(name);
+
+            displayUsers();
+
+            document.getElementById("nameInput").value = "";
+
+            alert(name + " registered successfully!");
+        }
+
+        function displayUsers() {
+
+            let list = document.getElementById("userList");
+
+            list.innerHTML = "";
+
+            for(let i = 0; i < registrations.length; i++) {
+
+                let li = document.createElement("li");
+
+                li.textContent = registrations[i];
+
+                list.appendChild(li);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
